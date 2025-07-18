@@ -589,7 +589,7 @@ open class NoteView(context : Context, attrs : AttributeSet?, defStyleAttr : Int
 
         while (numbering.size > numNumbers) {
             removeView(numbering.last())
-            numbering.removeLast()
+            numbering.removeAt(numbering.lastIndex)
         }
 
         numbering.forEachIndexed { index, number ->
@@ -615,7 +615,7 @@ open class NoteView(context : Context, attrs : AttributeSet?, defStyleAttr : Int
 
         while (advanceMarkers.size > notes.size) {
             removeView(advanceMarkers.last())
-            advanceMarkers.removeLast()
+            advanceMarkers.removeAt(advanceMarkers.lastIndex)
         }
     }
 
