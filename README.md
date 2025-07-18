@@ -1,5 +1,8 @@
 # Metronome
 
+> [!IMPORTANT]
+> This app is superseded by [https://codeberg.org/thetwom/metronome](https://codeberg.org/thetwom/metronome)
+
 Simple metronome app.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
