@@ -30,6 +30,7 @@ import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import de.moekadu.metronome.R
 import kotlin.math.*
+import androidx.core.content.withStyledAttributes
 
 class PlayButton(context : Context, attrs : AttributeSet?, defStyleAttr: Int)
     : View(context, attrs, defStyleAttr) {
@@ -43,13 +44,6 @@ class PlayButton(context : Context, attrs : AttributeSet?, defStyleAttr: Int)
     )
 
     private var buttonStatus = STATUS_PAUSED
-
-    private val paint = Paint()
-            .apply {
-                isAntiAlias = true
-                style = Paint.Style.FILL
-                color = labelColor
-            }
 
     private val pathPlayButton = Path()
             .apply {
@@ -82,14 +76,22 @@ class PlayButton(context : Context, attrs : AttributeSet?, defStyleAttr: Int)
             field = value
         }
 
+    private val paint = Paint()
+        .apply {
+            isAntiAlias = true
+            style = Paint.Style.FILL
+            color = labelColor
+        }
+
     init {
          attrs?.let {
-            val ta = context.obtainStyledAttributes(attrs,
-                R.styleable.PlayButton, defStyleAttr,
-                R.style.Widget_AppTheme_PlayButtonStyle
-            )
-            labelColor = ta.getColor(R.styleable.PlayButton_labelColor, labelColor)
-            ta.recycle()
+             context.withStyledAttributes(
+                 attrs,
+                 R.styleable.PlayButton, defStyleAttr,
+                 R.style.Widget_AppTheme_PlayButtonStyle
+             ) {
+                 labelColor = getColor(R.styleable.PlayButton_labelColor, labelColor)
+             }
         }
 
         background = AppCompatResources.getDrawable(context, R.drawable.play_button_background)

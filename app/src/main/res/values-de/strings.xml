@@ -111,4 +111,7 @@
     <string name="speed_selection">Geschwindigkeitsauswahl</string>
     <string name="others">Andere</string>
     <string name="visual_delay">Visualisierung verzögern</string>
+    <string name="app_is_superseded">Diese App wird fortgesetzt unter\nhttps://codeberg.org/thetwom/metronome</string>
+    <string name="dont_show_again">Nicht wieder anzeigen</string>
+    <string name="note">Notiz</string>
 </resources>

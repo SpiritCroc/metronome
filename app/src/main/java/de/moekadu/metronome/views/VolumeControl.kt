@@ -42,6 +42,9 @@ class VolumeControl(context : Context, attrs : AttributeSet?, defStyleAttr: Int)
 
     private val rectInt = Rect()
 
+    private val volMute = AppCompatResources.getDrawable(context, R.drawable.ic_volume_mute)
+    private var volDown = AppCompatResources.getDrawable(context, R.drawable.ic_volume_down)
+    private var volUp = AppCompatResources.getDrawable(context, R.drawable.ic_volume_up)
     private val sliderButton = ImageButton(context).apply {
         background = AppCompatResources.getDrawable(context, R.drawable.volume_control_slider)?.mutate()
         imageTintList = AppCompatResources.getColorStateList(context, R.color.volumecontrol_icon)
@@ -65,10 +68,6 @@ class VolumeControl(context : Context, attrs : AttributeSet?, defStyleAttr: Int)
     private val backgroundView = ImageView(context).apply {
         background = AppCompatResources.getDrawable(context, R.drawable.volumecontrol_background)
     }
-
-    private val volMute = AppCompatResources.getDrawable(context, R.drawable.ic_volume_mute)
-    private var volDown = AppCompatResources.getDrawable(context, R.drawable.ic_volume_down)
-    private var volUp = AppCompatResources.getDrawable(context, R.drawable.ic_volume_up)
 
     var vertical: Boolean = false
         set(value) {

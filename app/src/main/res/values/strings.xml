@@ -150,4 +150,7 @@
     <string name="basic">Basic</string>
     <string name="others">Others</string>
     <string name="visual_delay">Delay visual effects</string>
+    <string name="app_is_superseded">This app is superseded by \nhttps://codeberg.org/thetwom/metronome</string>
+    <string name="dont_show_again">Do not show again</string>
+    <string name="note">Note</string>
 </resources>

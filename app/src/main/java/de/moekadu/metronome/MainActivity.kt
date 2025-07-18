@@ -33,6 +33,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.preference.PreferenceManager
+import de.moekadu.metronome.dialogs.SupersededDialog
 import de.moekadu.metronome.fragments.MetronomeAndScenesFragment
 import de.moekadu.metronome.fragments.SettingsFragment
 import de.moekadu.metronome.fragments.ViewPagerAdapter
@@ -113,6 +114,13 @@ class MainActivity : AppCompatActivity() {
             handleFileLoadingIntent(intent)
         setDisplayHomeButton()
 //        Log.v("Metronome", "MainActivity:onCreate: end");
+
+        if (savedInstanceState == null) {
+            if (!sharedPreferences.getBoolean("dont_show_superseded_dialog", false)) {
+                val dialog = SupersededDialog()
+                dialog.show(supportFragmentManager, "s")
+            }
+        }
     }
 
     override fun onStop() {
