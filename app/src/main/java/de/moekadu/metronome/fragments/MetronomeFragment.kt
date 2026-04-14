@@ -197,7 +197,7 @@ class MetronomeFragment : Fragment() {
             false
         }
 
-        val speedPanel = view.findViewById(R.id.speed_panel) as SpeedPanel?
+        val speedPanel: SpeedPanel? = view.findViewById(R.id.speed_panel)
         speedPanel?.speedChangedListener = object : SpeedPanel.SpeedChangedListener {
             override fun onSpeedChanged(bpmDiff: Float) {
                 viewModel.bpm.value?.let { currentBpm ->

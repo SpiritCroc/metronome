@@ -174,37 +174,44 @@ class SettingsFragment: PreferenceFragmentCompat() {
         })
 
         minimumBpm.setOnPreferenceChangeListener { _, newValue ->
-            val bpm = (newValue as String).toFloat()
+            val bpm = (newValue as String).toFloatOrNull()
             val maxBpm = maximumBpm.text!!.toFloat()
-            if (bpm < maxBpm) {
+            if (bpm != null && bpm < maxBpm) {
                 minimumBpm.summary = getString(R.string.bpm, Utilities.getBpmString(bpm))
                 true
             }
-            else {
+            else if (bpm != null) {
                 Toast.makeText(activity, getString(
                     R.string.min_speed_higher_maximum, getString(R.string.bpm, newValue), getString(
                         R.string.bpm, maximumBpm.text)), Toast.LENGTH_LONG).show()
 //                Toast.makeText(activity, "Invalid minimum bpm: $bpm", Toast.LENGTH_SHORT).show()
                 false
             }
+            else {
+                // we could send a message of "invalid value" here ...
+                false
+            }
         }
 
         maximumBpm.setOnPreferenceChangeListener { _, newValue ->
-            val bpm = (newValue as String).toFloat()
+            val bpm = (newValue as String).toFloatOrNull()
             val minBpm = minimumBpm.text!!.toFloat()
-            if (bpm > minBpm && bpm <= ABSOLUTE_MAXIMUM_SPEED) {
+            if (bpm != null && bpm > minBpm && bpm <= ABSOLUTE_MAXIMUM_SPEED) {
                 maximumBpm.summary = getString(R.string.bpm, Utilities.getBpmString(bpm))
                 true
-            } else if (bpm <= minBpm) {
+            } else if (bpm != null && bpm <= minBpm) {
                 Toast.makeText(activity, getString(
                     R.string.max_speed_lower_minimum, getString(R.string.bpm, newValue), getString(
                         R.string.bpm, minimumBpm.text)), Toast.LENGTH_LONG).show()
 //                Toast.makeText(activity, "Invalid maximum bpm: $bpm", Toast.LENGTH_SHORT).show()
                 false
-            } else { // bpm > ABSOLUTE_MAXIMUM_SPEED
+            } else if (bpm != null){ // bpm > ABSOLUTE_MAXIMUM_SPEED
                 Toast.makeText(activity, getString(
                     R.string.max_speed_larger_than_allowed, getString(
                         R.string.bpm, newValue), getString(R.string.bpm, ABSOLUTE_MAXIMUM_SPEED.toString())), Toast.LENGTH_LONG).show()
+                false
+            } else {
+                // we could send a "invalid value" message here
                 false
             }
         }

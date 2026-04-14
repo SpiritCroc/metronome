@@ -220,7 +220,7 @@ open class NoteView(context : Context, attrs : AttributeSet?, defStyleAttr : Int
 
     private fun computeLargestAspectRatio() : Float {
         var largestAspectRatio = 0.0f
-        for(duration in NoteDuration.values()) {
+        for(duration in NoteDuration.entries) {
             for (note in 0 until getNumAvailableNotes()) {
                 AppCompatResources.getDrawable(context, getNoteDrawableResourceID(note, duration))
                     ?.let { drawable ->
