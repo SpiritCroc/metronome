@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
 //        Log.v("Metronome", "MainActivity:onCreate: end");
 
         if (savedInstanceState == null) {
-            if (!sharedPreferences.getBoolean("dont_show_superseded_dialog", false)) {
+            if (false && !sharedPreferences.getBoolean("dont_show_superseded_dialog", false)) {
                 val dialog = SupersededDialog()
                 dialog.show(supportFragmentManager, "s")
             }
